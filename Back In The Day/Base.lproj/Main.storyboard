@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Back_In_The_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,96 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWw-w1-58J">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="pSy-6e-cH3"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Back In The Day" id="XvO-Sp-Qni">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="lkX-Tq-R6V">
+                                            <connections>
+                                                <action selector="play:" destination="BYZ-38-t0r" id="KaO-aW-sq5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Dv-KL-n4G">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hhw-Oj-bgW"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="pause" id="Fn4-9G-4e5">
+                                        <connections>
+                                            <action selector="pause:" destination="BYZ-38-t0r" id="I8E-9e-X8A"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mHC-1y-d5n"/>
+                                    <barButtonItem title="Stop" id="gtb-ee-Th4">
+                                        <connections>
+                                            <action selector="stop:" destination="BYZ-38-t0r" id="g2f-lc-arF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backintheday.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3gk-cy-kuc">
+                                <rect key="frame" x="20" y="108" width="560" height="334"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="26U-Eu-4kb"/>
+                                    <constraint firstAttribute="height" constant="334" id="se0-hY-96f"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="uIM-PO-IqH">
+                                <rect key="frame" x="18" y="459" width="564" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GWg-Rj-JTa"/>
+                                    <constraint firstAttribute="width" constant="560" id="nNK-hB-3yT"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="adjustVolume:" destination="BYZ-38-t0r" eventType="valueChanged" id="P37-kr-Fmy"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NBC-EW-Jce">
+                                <rect key="frame" x="18" y="517" width="564" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="Sif-BQ-WKJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="x0Q-B8-psR"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="scrub:" destination="BYZ-38-t0r" eventType="valueChanged" id="XqR-k1-BeM"/>
+                                </connections>
+                            </slider>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3gk-cy-kuc" firstAttribute="top" secondItem="UWw-w1-58J" secondAttribute="bottom" constant="44" id="0rs-fo-LJE"/>
+                            <constraint firstItem="UWw-w1-58J" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6dr-6v-0wQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Dv-KL-n4G" secondAttribute="trailing" constant="-20" id="Cck-8v-FfM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UWw-w1-58J" secondAttribute="trailing" constant="-20" id="EEr-ql-sKG"/>
+                            <constraint firstItem="UWw-w1-58J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Hmu-dj-Par"/>
+                            <constraint firstItem="uIM-PO-IqH" firstAttribute="top" secondItem="3gk-cy-kuc" secondAttribute="bottom" constant="17" id="KfW-zx-4fd"/>
+                            <constraint firstItem="3gk-cy-kuc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NsV-qw-fZ4"/>
+                            <constraint firstItem="NBC-EW-Jce" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OEN-Ds-3Nu"/>
+                            <constraint firstItem="uIM-PO-IqH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lhg-y2-RxM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0Dv-KL-n4G" secondAttribute="bottom" id="nkA-RI-2BY"/>
+                            <constraint firstItem="NBC-EW-Jce" firstAttribute="top" secondItem="uIM-PO-IqH" secondAttribute="bottom" constant="15" id="pFP-Fe-vgV"/>
+                            <constraint firstItem="0Dv-KL-n4G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="w9a-3f-GSE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrubSlider" destination="NBC-EW-Jce" id="VqU-22-ekD"/>
+                        <outlet property="volume" destination="uIM-PO-IqH" id="Icb-TA-KCY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backintheday.jpg" width="1920" height="1080"/>
+    </resources>
 </document>
